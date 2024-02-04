@@ -1,0 +1,41 @@
+.hero{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    background-color: #495E57;
+    font-size: 64;
+    font-family: "Markazi Text";
+}
+
+.heroContent {
+    grid-column: 4 / span 3;
+    display: flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.heroContent h1 {
+    color: #F4CE14;
+    margin-bottom: 0;
+    font-family: "Markazi Text";
+    font-size: 64px;
+    font-weight: medium!important;
+}
+
+.heroContent h2 {
+    color: white;
+    margin-top: 0;
+    font-family: "Markazi Text";
+    font-size: 40px;
+    font-weight:normal;
+    line-height: 5px;
+}
+
+.heroContent p {
+    color: white;
+    font-family: "Karla";
+    font-size: 18px;
+    font-weight: medium;
+}
+
+
