@@ -3,6 +3,11 @@ import style from "./Hero.module.css";
 
 
 const Hero = () => {
+
+  const onClickHandler = () => {
+    
+  }
+
   return (
     <div className={style.hero}>
       <div className={style.heroContent}>
@@ -12,7 +17,7 @@ const Hero = () => {
           We are a family owned Mediterranean restaurant, focused on traditional
           recipes served with a modern twist.{" "}
         </p>
-        <Button>Reserve a Table</Button>
+        <Button onlClick={onClickHandler}>Reserve a Table</Button>
       </div>
       <img src="/images/restauranfood.jpg" alt="" className={style.hero_image}/>
     </div>

@@ -1,5 +1,5 @@
-import Button from "../../common/Button";
-import SpecialsCard from "../../common/SpecialsCard";
+import Button from "../common/Button";
+import SpecialsCard from "../common/SpecialsCard";
 import style from "./Specials.module.css";
 
 const Specials = () => {

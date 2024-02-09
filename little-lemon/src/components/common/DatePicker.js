@@ -28,7 +28,7 @@ const DatePicker = (props) => {
 
     return (
         <>
-        <select defaultValue="" style={style.date_picker} onChange={handleDateChange}>
+        <select defaultValue="" style={style.date_picker} onChange={handleDateChange} aria-label="Date Selector">
         <option value="" disabled>Select a date</option>
             {availableDates.map((date, index) => {
                 return (

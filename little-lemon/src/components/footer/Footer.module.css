@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     background-color: #495E57;
+    margin-top: auto;
 }
 
 .footer_content {
@@ -10,7 +11,6 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .footer_content h1 {

@@ -13,10 +13,10 @@ const SpecialsCard = ({ image, title, price, description }) => {
   };
 
   const imageStyle = {
-    minWidth: "100%",
-    maxHeight: "200px",
+    width: "100%",
+    height: "300px",
     borderRadius: "10px 10px 0 0",
-    ObjectFit: "cover",
+    objectFit: "cover"
   };
 
   const specialDetails = {

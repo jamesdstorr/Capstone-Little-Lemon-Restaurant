@@ -1,0 +1,27 @@
+.gallery_section{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin-top:100px;
+    margin-bottom:50px
+}
+
+.gallery_content {
+    grid-column: 3 / span 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gallery_images {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;    
+    transition: opacity 0.5s ease;
+    
+}
+
+.gallery_buttons{
+    display: flex;
+    gap: 20px
+}
+

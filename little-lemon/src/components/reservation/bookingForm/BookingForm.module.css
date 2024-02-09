@@ -1,0 +1,34 @@
+.reservation_section{
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin-bottom: 50px;
+}
+
+.reservation_content{
+    display: flex;
+    flex-direction: column;
+
+    margin-top:80px;
+    grid-column: 3 / span 8;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    gap: 20px;
+    height: 100%
+}
+
+.form_item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form_item input {
+    padding:5px;
+    border-radius: 5px;
+    border: 1px black solid
+}

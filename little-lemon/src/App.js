@@ -8,7 +8,7 @@ import Reservation from "./pages/Reservation";
 
 function App() {
   return (
-    <>
+    <div className="app_content">
       <Router>
         <Nav />
         <Routes>
@@ -16,7 +16,7 @@ function App() {
           <Route path="/reservations" element={<Reservation/>} />
         </Routes>
       </Router>
-    </>
+    </div>
   );
 }
 
