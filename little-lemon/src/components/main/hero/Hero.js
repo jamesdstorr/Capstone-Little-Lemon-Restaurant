@@ -1,6 +1,7 @@
 import Button from "../../common/Button";
 import style from "./Hero.module.css";
 
+
 const Hero = () => {
   return (
     <div className={style.hero}>
@@ -13,7 +14,7 @@ const Hero = () => {
         </p>
         <Button>Reserve a Table</Button>
       </div>
-      <img />
+      <img src="/images/restauranfood.jpg" alt="" className={style.hero_image}/>
     </div>
   );
 };

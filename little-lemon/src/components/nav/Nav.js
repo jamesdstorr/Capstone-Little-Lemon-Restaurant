@@ -1,14 +1,18 @@
 import style from "./Nav.module.css";
-import logo from "../../public/images/Logo.png";
+import { Link } from 'react-router-dom';
+
 
 const Nav = () => {
+
+
+
   return (
     <header>
       <nav class={style.Nav}>
-        <img src={logo} alt="logo" class={style.Logo} />
+        <img src="/images/Logo.png" alt="logo" class={style.Logo} />
         <ul class={style.NavLinks}>
           <li>
-            <a href="#">Home</a>
+          <Link to="/">Home</Link>
           </li>
           <li>
             <a href="#">About</a>
@@ -17,7 +21,7 @@ const Nav = () => {
             <a href="#">Menu</a>
           </li>
           <li>
-            <a href="#">Reservations</a>
+            <Link to="/reservations">Reservations</Link>
           </li>
           <li>
             <a href="#">Order Online</a>

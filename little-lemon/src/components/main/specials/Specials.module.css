@@ -1,0 +1,32 @@
+.specials {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.specials_content {
+    grid-column: 3 / span 8;
+    display: flex;
+    flex-direction: column;
+}
+
+.specials_title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.specials_content h1 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: "Markazi Text";
+    font-size: 40px;
+    font-weight: medium!important;
+}
+
+.specialItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap:10px;
+}
