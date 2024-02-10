@@ -7,7 +7,6 @@ const ReservationForm = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     props.createBooking()
-    
   };
     return (
       <div className={style.reservation_section}>
@@ -26,34 +25,31 @@ const ReservationForm = (props) => {
             </div>
             <div className={style.form_item}>
               <label for="guests">Number of Guests</label>
-              <input 
-                value={props.reservation.guests} 
+              <input
+                value={props.reservation.guests}
                 onChange={(e) => props.setReservation(currentSelected => ({...currentSelected, guests:e.target.value}))}
-                type="number" 
-                id="guests" 
-                name="guests" 
+                type="number"
+                id="guests"
+                name="guests"
                 disabled = {props.availableTimes.availableTimes.length === 0}
                 required />
             </div>
             <div className={style.form_item}>
               <label for="occasion">Occasion</label>
               <input
-                value={props.reservation.occasion} 
+                value={props.reservation.occasion}
                 onChange={(e) => props.setReservation(currentSelected => ({...currentSelected, occasion:e.target.value}))} 
-                type="text" 
+                type="text"
                 disabled ={props.availableTimes.availableTimes.length === 0}
                 id="occasion" />
             </div>
             <div>
-                <Button type="submit">Submit</Button>
+                <Button type="Submit" name="Submit-button">Submit</Button>
             </div>
-           
           </form>
         </div>
       </div>
     );
   }
-
-  
 
 export default ReservationForm;

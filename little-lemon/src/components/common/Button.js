@@ -1,4 +1,4 @@
-const Button = ({onlClick, children, type="button"}) => {
+const Button = ({onClick, children, type="button", name=""}) => {
   const primary_button = {
       backgroundColor: "#F4CE14",
       color: "black",
@@ -19,7 +19,7 @@ const Button = ({onlClick, children, type="button"}) => {
     }
 
   return (
-    <button style={primary_button} onClick={onlClick} type={type}>
+    <button style={primary_button} onClick={onClick} type={type} name={name}>
       {children}
     </button>
   )

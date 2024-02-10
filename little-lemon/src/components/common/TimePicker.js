@@ -14,7 +14,7 @@ const TimePicker = (props) => {
   };
 
   return (
-    <select defaultValue="" onChange={handleChange} style={style} aria-label="Time Selector">
+    <select defaultValue="" onChange={handleChange} style={style} aria-label="Time Selector" id="time">
       <option value="" disabled>
         Select a Time
       </option>

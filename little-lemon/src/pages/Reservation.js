@@ -6,15 +6,9 @@ import fakeAPI from "../utility/fakeAPI";
 import style from "../components/reservation/Reservation.module.css";
 import Confirmation from "../components/reservation/confirmation/Confirmation";
 import Gallery from "../components/Gallery/Gallery";
+import availableTimesReducer from "../components/reservation/reducer/availableTimesReducer";
 
-const availableTimesReducer = (state, action) => {
-  switch (action.type) {
-    case 'setAvailableTimes':
-      return { ...state, date: action.payload.date, availableTimes: action.payload.availableTimes };
-    default:
-      throw new Error(`Unhandled action type: ${action.type}`);
-  }
-};
+
 
 const Reservation = () => {
   const [date, setDate] = useState(null);
