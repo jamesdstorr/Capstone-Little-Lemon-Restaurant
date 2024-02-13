@@ -17,7 +17,7 @@ const ConfirmedBooking = (props) => {
           <li>Date: {formattedDate} </li>
             <li>Time: {props.reservation.time}</li>
             <li>Number of Guests: {props.reservation.guests} </li>
-            {props.reservation.occasion && <li>Occasion: </li>}
+            {props.reservation.occasion && <li>Occasion: {props.reservation.occasion}</li>}
           </div>
         </ul>
       </div>

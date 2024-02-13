@@ -25,10 +25,12 @@ form {
     display: flex;
     align-items: center;
     gap: 10px;
+    font-family: 'Karla';
 }
 
 .form_item input {
     padding:5px;
     border-radius: 5px;
-    border: 1px black solid
+    border: 1px black solid;
+    font-family: 'Karla';
 }
