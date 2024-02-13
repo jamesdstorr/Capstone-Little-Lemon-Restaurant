@@ -1,11 +1,12 @@
 import Button from "../../common/Button";
 import style from "./Hero.module.css";
+import React from "react";
+import { Link } from "react-router-dom";
 
 
 const Hero = () => {
 
   const onClickHandler = () => {
-    
   }
 
   return (
@@ -17,7 +18,7 @@ const Hero = () => {
           We are a family owned Mediterranean restaurant, focused on traditional
           recipes served with a modern twist.{" "}
         </p>
-        <Button onlClick={onClickHandler}>Reserve a Table</Button>
+        <Link to="/reservations"><Button onlClick={onClickHandler}>Reserve a Table</Button></Link>
       </div>
       <img src="/images/restauranfood.jpg" alt="" className={style.hero_image}/>
     </div>

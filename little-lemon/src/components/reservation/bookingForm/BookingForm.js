@@ -1,13 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import style from "./BookingForm.module.css";
 import TimePicker from "../../common/TimePicker";
 import Button from "../../common/Button";
 
 const ReservationForm = (props) => {
+
+
+
   const submitHandler = (e) => {
     e.preventDefault();
     props.createBooking()
   };
+
     return (
       <div className={style.reservation_section}>
         <div className={style.reservation_content}>
@@ -31,16 +35,18 @@ const ReservationForm = (props) => {
                 type="number"
                 id="guests"
                 name="guests"
-                disabled = {props.availableTimes.availableTimes.length === 0}
+                min="1"
+                max="8"
+                disabled = {props.reservation.time === ""}
                 required />
             </div>
             <div className={style.form_item}>
               <label for="occasion">Occasion</label>
               <input
                 value={props.reservation.occasion}
-                onChange={(e) => props.setReservation(currentSelected => ({...currentSelected, occasion:e.target.value}))} 
+                onChange={(e) => props.setReservation(currentSelected => ({...currentSelected, occasion:e.target.value}))}
                 type="text"
-                disabled ={props.availableTimes.availableTimes.length === 0}
+                disabled ={props.reservation.time === ""}
                 id="occasion" />
             </div>
             <div>

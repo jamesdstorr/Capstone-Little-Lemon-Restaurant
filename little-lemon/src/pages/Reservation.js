@@ -1,10 +1,10 @@
-import { React, useState, useEffect, useReducer } from "react";
+import { React, useState, useEffect, useReducer, useCallback } from "react";
 import Footer from "../components/footer/Footer";
 import Hero from "../components/reservation/hero/Hero";
 import BookingForm from "../components/reservation/bookingForm/BookingForm";
 import fakeAPI from "../utility/fakeAPI";
 import style from "../components/reservation/Reservation.module.css";
-import Confirmation from "../components/reservation/confirmation/Confirmation";
+import ConfirmedBooking from "../components/reservation/confirmation/ConfirmedBooking";
 import Gallery from "../components/Gallery/Gallery";
 import availableTimesReducer from "../components/reservation/reducer/availableTimesReducer";
 
@@ -18,18 +18,33 @@ const Reservation = () => {
     availableTimes: [],
   };
 
+  const Reset = () =>{
+    setReservation({
+      date: "",
+      time: "",
+      guests: 2,
+      occasion: "",
+      confirmed: false,
+    })
+  }
+
   const [availableTimes, dispatchAvailableTimes] = useReducer(availableTimesReducer, initialAvailableTimesState);
   const [reservation, setReservation] = useState({
     date: "",
     time: "",
-    guests: 0,
+    guests: 2,
     occasion: "",
     confirmed: false,
   });
 
+  const updateTimes = useCallback(()=>{
+    fakeAPI.fetchAPI(date).then((data) =>
+    dispatchAvailableTimes({type: 'setAvailableTimes', payload: {date: date, availableTimes: data}})
+  );
+  },[date]);
 
 
-  const createBooking = () => {
+  const submitForm = () => {
     if (reservation.date && reservation.time && reservation.guests) {
       const response = fakeAPI.submitAPI(reservation);
       if (response) {
@@ -43,14 +58,13 @@ const Reservation = () => {
 
   useEffect(() => {
     if (date && date !== reservation.date) {
+      if(reservation.confirmed){
+        Reset();
+      }
       setReservation((current) => ({ ...current, date: date }));
-      fakeAPI
-        .fetchAPI(date)
-        .then((data) =>
-          dispatchAvailableTimes({type: 'setAvailableTimes', payload: {date: date, availableTimes: data}}) 
-        );
+      updateTimes();
     }
-  }, [date, reservation]);
+  }, [date, reservation, updateTimes]);
 
   return (
     <div classname={style.page_container}>
@@ -61,10 +75,10 @@ const Reservation = () => {
             availableTimes={availableTimes}
             setReservation={setReservation}
             reservation={reservation}
-            createBooking={createBooking}
+            createBooking={submitForm}
           />
         )}
-        {reservation.confirmed && <Confirmation reservation={reservation} />}
+        {reservation.confirmed && <ConfirmedBooking reservation={reservation} />}
       <Gallery/>
       </main>
       <Footer />

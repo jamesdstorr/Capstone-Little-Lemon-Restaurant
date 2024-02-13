@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Confirmation.module.css";
 
-const Confirmation = (props) => {
+const ConfirmedBooking = (props) => {
 
   const formattedDate = props.reservation.date ? props.reservation.date.toLocaleDateString() : 'Not specified';
 
@@ -27,4 +27,4 @@ const Confirmation = (props) => {
   );
 };
 
-export default Confirmation;
+export default ConfirmedBooking;
