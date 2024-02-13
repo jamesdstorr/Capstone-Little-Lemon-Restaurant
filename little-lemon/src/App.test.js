@@ -5,22 +5,28 @@ import fakeAPI from "./utility/fakeAPI";
 
 
 
-describe("Booking Form", () => {
+describe("Booking Form with Initial State", () => {
     const mockCreateBooking = jest.fn();
     const mockSetReservation = jest.fn();
-    const availableTimes = { availableTimes: ["10:00", "11:00"] }; // Example available times
-    const reservation = { guests: "", occasion: "" };
+    const availableTimes = { date:"", availableTimes: [] }; // Example available times
+    const reservation = { date: "",
+    time: "",
+    guests: 2,
+    occasion: "",
+    confirmed: false, };
+    beforeEach(() =>{
+        render(
+            <BookingForm
+                createBooking={mockCreateBooking}
+                setReservation={mockSetReservation}
+                availableTimes={availableTimes}
+                reservation={reservation}
+            />
+        );
+    })
 
-    render(
-        <BookingForm
-            createBooking={mockCreateBooking}
-            setReservation={mockSetReservation}
-            availableTimes={availableTimes}
-            reservation={reservation}
-        />
-    );
 
-    test("renders the form with inputs and a submit button and Create Booking is called when button clicked", () => {
+    test("renders the form with inputs and a submit button and Create Booking is called when button clicked", async () => {
         expect(screen.getByLabelText("Available Times")).toBeInTheDocument();
         expect(screen.getByLabelText("Number of Guests")).toBeInTheDocument();
         expect(screen.getByLabelText("Occasion")).toBeInTheDocument();
@@ -29,7 +35,102 @@ describe("Booking Form", () => {
         submitButton.click();
         expect(mockCreateBooking).toHaveBeenCalled();
     });
+
+    test("input form fields should be disabled if no time is selected", () => {
+        const guestsInput = screen.getByLabelText("Number of Guests");
+        const occasionInput = screen.getByLabelText("Occasion");
+        const timeInput = screen.getByLabelText("Available Times");
+        expect(guestsInput).toBeDisabled();
+        expect(occasionInput).toBeDisabled();
+        expect (timeInput).toBeDisabled();
+    });
 });
+
+
+describe("Booking Form with Selected Date", () => {
+    const mockCreateBooking = jest.fn();
+    const mockSetReservation = jest.fn();
+    const availableTimes = { date:"2022-03-01", availableTimes: ['13:00', '13:30'] }; // Example available times
+    const reservation = { date: "",
+    time: "",
+    guests: 2,
+    occasion: "",
+    confirmed: false, };
+    beforeEach(() =>{
+        render(
+            <BookingForm
+                createBooking={mockCreateBooking}
+                setReservation={mockSetReservation}
+                availableTimes={availableTimes}
+                reservation={reservation}
+            />
+        );
+    })
+
+
+    test("renders the form with inputs and a submit button and Create Booking is called when button clicked", async () => {
+        expect(screen.getByLabelText("Available Times")).toBeInTheDocument();
+        expect(screen.getByLabelText("Number of Guests")).toBeInTheDocument();
+        expect(screen.getByLabelText("Occasion")).toBeInTheDocument();
+        const submitButton = screen.getByRole("button", { name: "Submit" });
+        expect(submitButton).toBeInTheDocument();
+        submitButton.click();
+        expect(mockCreateBooking).toHaveBeenCalled();
+    });
+
+    test("time input form fields should be enabled", () => {
+        const guestsInput = screen.getByLabelText("Number of Guests");
+        const occasionInput = screen.getByLabelText("Occasion");
+        const timeInput = screen.getByLabelText("Available Times");
+        expect(guestsInput).toBeDisabled();
+        expect(occasionInput).toBeDisabled();
+        expect(timeInput).toBeEnabled();
+    });
+});
+
+describe("Booking Form with Selected Date and Time", () => {
+    const mockCreateBooking = jest.fn();
+    const mockSetReservation = jest.fn();
+    const availableTimes = { date:"2022-03-01", availableTimes: ['13:00', '13:30'] }; // Example available times
+    const reservation = { date: "",
+    time: "13:00",
+    guests: 2,
+    occasion: "",
+    confirmed: false, };
+    beforeEach(() =>{
+        render(
+            <BookingForm
+                createBooking={mockCreateBooking}
+                setReservation={mockSetReservation}
+                availableTimes={availableTimes}
+                reservation={reservation}
+            />
+        );
+    })
+
+
+    test("renders the form with inputs and a submit button and Create Booking is called when button clicked", async () => {
+        expect(screen.getByLabelText("Available Times")).toBeInTheDocument();
+        expect(screen.getByLabelText("Number of Guests")).toBeInTheDocument();
+        expect(screen.getByLabelText("Occasion")).toBeInTheDocument();
+        const submitButton = screen.getByRole("button", { name: "Submit" });
+        expect(submitButton).toBeInTheDocument();
+        submitButton.click();
+        expect(mockCreateBooking).toHaveBeenCalled();
+    });
+
+    test("time input form fields should be enabled", () => {
+        const guestsInput = screen.getByLabelText("Number of Guests");
+        const occasionInput = screen.getByLabelText("Occasion");
+        const timeInput = screen.getByLabelText("Available Times");
+        expect(guestsInput).toBeEnabled();
+        expect(occasionInput).toBeEnabled();
+        expect(timeInput).toBeEnabled();
+    });
+});
+
+
+
 
 jest.mock("./utility/fakeAPI", () => ({
     fetchAPI: jest.fn(),

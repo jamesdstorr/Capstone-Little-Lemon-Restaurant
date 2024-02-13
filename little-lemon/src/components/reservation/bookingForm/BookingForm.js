@@ -47,7 +47,8 @@ const ReservationForm = (props) => {
                 onChange={(e) => props.setReservation(currentSelected => ({...currentSelected, occasion:e.target.value}))}
                 type="text"
                 disabled ={props.reservation.time === ""}
-                id="occasion" />
+                id="occasion" 
+                testid="occasion"/>
             </div>
             <div>
                 <Button type="Submit" name="Submit-button">Submit</Button>
